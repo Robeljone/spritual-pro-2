@@ -11,7 +11,6 @@ function Navbar()
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
-
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
@@ -32,12 +31,13 @@ function Navbar()
     }
   };
 
+
+
   return (
     <>
       <nav className='navbar'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
           EOTC
-          <img src='/../images/main-header-am-2.png' ></img>
           <i class='fab fa-firstdraft' />
         </Link>
         <div className='menu-icon' onClick={handleClick}>

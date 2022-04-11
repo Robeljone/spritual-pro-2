@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './components/Navbar';
+import footer from './components/footer'
 import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -13,6 +14,7 @@ import Consulting from './components/pages/Consulting';
 function App() {
   return (
     <Router>
+      <div>
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home} />
@@ -23,8 +25,9 @@ function App() {
         <Route path='/marketing' component={Marketing} />
         <Route path='/consulting' component={Consulting} />
       </Switch>
+      <footer />
+      </div>
     </Router>
   );
 }
-
 export default App;
