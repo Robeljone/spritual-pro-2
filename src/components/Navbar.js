@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Dropdown from './Dropdown';
 import Dropdown2 from './dropdown2';
+import Dropdown3 from './dropdown3';
 
-function Navbar() {
+function Navbar()
+ {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -30,27 +32,12 @@ function Navbar() {
     }
   };
 
-  const onMouseEnter1 = () => {
-    if (window.innerWidth < 960) 
-    {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave1 = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
   return (
     <>
       <nav className='navbar'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
           EOTC
+          <img src='/../images/main-header-am-2.png' ></img>
           <i class='fab fa-firstdraft' />
         </Link>
         <div className='menu-icon' onClick={handleClick}>
@@ -76,6 +63,15 @@ function Navbar() {
             </Link>
             {dropdown && <Dropdown />}
           </li>
+          <li className='nav-item'>
+            <Link
+              to='/contact-us'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              Contact Us
+            </Link>
+          </li>
           <li className='nav-item'
            onMouseEnter={onMouseEnter}
            onMouseLeave={onMouseLeave}
@@ -89,17 +85,22 @@ function Navbar() {
             </Link>
             {dropdown && <Dropdown2 />}
           </li>
-          <li className='nav-item'>
+         
+          <li className='nav-item'
+           onMouseEnter={onMouseEnter}
+           onMouseLeave={onMouseLeave}
+          >
             <Link
-              to='/contact-us'
+              to='/'
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Contact Us
+              Others <i className='fas fa-caret-down' />
             </Link>
+            {dropdown && <Dropdown3 />}
           </li>
         </ul>
-        <Button />
+        
       </nav>
     </>
   );
