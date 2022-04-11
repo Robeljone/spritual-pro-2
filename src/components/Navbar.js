@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
@@ -10,20 +10,48 @@ function Navbar()
  {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [dropdownBlog, setDropdownBlog] = useState(false);
+  const [dropdownMedia, setDropdownMedia] = useState(false);
+  const [dropdownOther, setDropdownOther] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
-
-  const onMouseEnter = () => {
+  const onMouseEnter = (e) => {
     if (window.innerWidth < 960) 
     {
       setDropdown(false);
-    } else {
-      setDropdown(true);
+    }
+    else if(e.target.id == 'me')
+    {
+      setDropdownMedia(true);
+      setDropdownBlog(false);
+      setDropdownOther(false);
+      setDropdown(false);
+    }
+    else if(e.target.id == 'bl')
+    {
+      setDropdownMedia(false);
+      setDropdownOther(false);
+      setDropdownBlog(true);
+      setDropdown(false);
+    }
+    else if(e.target.id == 'ot')
+    {
+      setDropdownMedia(false);
+      setDropdownOther(true);
+      setDropdownBlog(false);
+      setDropdown(false);
+    }
+     else 
+    {
+      setDropdownMedia(false);
+      setDropdownBlog(false);
+      setDropdownOther(false);
+      setDropdown(false);
     }
   };
 
-  const onMouseLeave = () => {
+  const onMouseLeave = (e) => {
     if (window.innerWidth < 960) {
       setDropdown(false);
     } else {
@@ -50,7 +78,7 @@ function Navbar()
             </Link>
           </li>
           <li
-            className='nav-item'
+            className='nav-item' id='bl'
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
           >
@@ -61,7 +89,7 @@ function Navbar()
             >
               Blogs <i className='fas fa-caret-down' />
             </Link>
-            {dropdown && <Dropdown />}
+            {dropdownBlog && <Dropdown />}
           </li>
           <li className='nav-item'>
             <Link
@@ -72,7 +100,7 @@ function Navbar()
               Contact Us
             </Link>
           </li>
-          <li className='nav-item'
+          <li className='nav-item' id='me'
            onMouseEnter={onMouseEnter}
            onMouseLeave={onMouseLeave}
           >
@@ -83,10 +111,10 @@ function Navbar()
             >
               Media <i className='fas fa-caret-down' />
             </Link>
-            {dropdown && <Dropdown2 />}
+            {dropdownMedia && <Dropdown2 />}
           </li>
          
-          <li className='nav-item'
+          <li className='nav-item' id='ot'
            onMouseEnter={onMouseEnter}
            onMouseLeave={onMouseLeave}
           >
@@ -95,7 +123,7 @@ function Navbar()
               className='nav-links'
               onClick={closeMobileMenu}
             >
-              Others <i className='fas fa-caret-down' />
+              Others<i className='fas fa-caret-down' />
             </Link>
             {dropdown && <Dropdown3 />}
           </li>
