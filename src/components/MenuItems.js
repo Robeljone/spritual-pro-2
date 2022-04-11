@@ -1,22 +1,17 @@
 export const MenuItems = [
   {
-    title: 'Marketing',
-    path: '/marketing',
+    title: 'EOTC',
+    path: '/',
     cName: 'dropdown-link'
   },
   {
-    title: 'Consulting',
-    path: '/consulting',
+    title: 'Addis Ababa EOTC',
+    path: '/',
     cName: 'dropdown-link'
   },
   {
-    title: 'Design',
-    path: '/design',
-    cName: 'dropdown-link'
-  },
-  {
-    title: 'Development',
-    path: '/development',
+    title: 'EOTCMK-hamer',
+    path: '/',
     cName: 'dropdown-link'
   }
 ];
